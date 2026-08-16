@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progresso Mudança de Infra MIT 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="blueprint-grid"></div>
+
+<button class="edit-fab" id="editFab" title="Editar dados" aria-label="Editar dados">
+  <svg viewBox="0 0 24 24" fill="none">
+    <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+
+<div class="modal-overlay" id="editorOverlay">
+  <div class="modal editor-modal">
+    <div class="modal-head">
+      <div>
+        <h2>Editar dados</h2>
+        <p class="modal-sub">Marque o progresso, edite nomes ou adicione/remova setores e etapas.</p>
+      </div>
+      <button class="modal-close" id="editorClose" aria-label="Fechar">&times;</button>
+    </div>
+
+    <div class="editor-toolbar">
+      <label class="btn-ghost" for="openCsvInput">Abrir CSV do computador</label>
+      <input type="file" id="openCsvInput" accept=".csv,.txt" hidden>
+      <button class="btn-ghost" id="addSectorBtn">+ Adicionar setor</button>
+      <span class="editor-status" id="editorStatus"></span>
+    </div>
+
+    <div class="editor-body" id="editorBody"></div>
+
+    <div class="modal-foot">
+      <button class="btn-primary" id="saveFileBtn">Salvar em dados.csv</button>
+      <button class="btn-secondary" id="downloadCsvBtn">Baixar CSV</button>
+      <span class="modal-foot-hint">Na 1ª vez, selecione o <strong>dados.csv</strong> da pasta do site. Depois, salva direto nele.</span>
+    </div>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow"><span class="dot"></span> PAINEL DE OBRA &nbsp;·&nbsp; 13 SETORES &nbsp;·&nbsp; 9 ETAPAS</div>
+    <h1 class="title">PROGRESSO<br>MUDANÇA DE INFRA<br><span class="title-year">MIT 2026</span></h1>
+
+    <div class="hero-stats">
+      <div class="gauge-wrap">
+        <svg class="gauge" viewBox="0 0 200 200">
+          <circle class="gauge-track" cx="100" cy="100" r="86"></circle>
+          <circle class="gauge-fill" id="gaugeFill" cx="100" cy="100" r="86"></circle>
+          <g id="gaugeTicks"></g>
+        </svg>
+        <div class="gauge-center">
+          <span class="gauge-value" id="overallPct">0%</span>
+          <span class="gauge-label">CONCLUÍDO</span>
+        </div>
+      </div>
+
+      <div class="stat-cards">
+        <div class="stat-card">
+          <span class="stat-num" id="statEtapas">0/0</span>
+          <span class="stat-label">Etapas concluídas</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num" id="statSetoresOk">0/13</span>
+          <span class="stat-label">Setores 100%</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num" id="statBottleneck">—</span>
+          <span class="stat-label">Etapa mais atrasada</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="panel" id="emptyState">
+    <div class="empty">
+      <p id="emptyStateText">Carregando dados.csv…</p>
+    </div>
+  </section>
+
+  <div id="dashboardContent" class="hidden">
+
+    <section class="panel panel-primary">
+      <div class="panel-head">
+        <span class="tag">01</span>
+        <h2>Progresso por setor</h2>
+      </div>
+      <div class="sector-grid" id="sectorGrid"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <span class="tag">02</span>
+        <h2>Ranking de setores</h2>
+        <span class="panel-sub">do mais ao menos avançado</span>
+      </div>
+      <div class="bar-list" id="sectorRanking"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <span class="tag">03</span>
+        <h2>Progresso por etapa</h2>
+        <span class="panel-sub">quantos setores concluíram cada etapa</span>
+      </div>
+      <div class="bar-list" id="stageRanking"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <span class="tag">04</span>
+        <h2>Checklist detalhado</h2>
+        <span class="panel-sub">clique em um setor para ver as 9 etapas</span>
+      </div>
+      <div class="detail-wrap">
+        <div class="sector-tabs" id="sectorTabs"></div>
+        <div class="checklist" id="checklist"></div>
+      </div>
+    </section>
+
+  </div>
+
+</main>
+
+<footer class="footer">
+  <span>Progresso Mudança de Infra MIT 2026</span>
+  <span class="footer-dot">·</span>
+  <span id="footerUpdated">Aguardando dados.csv</span>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
