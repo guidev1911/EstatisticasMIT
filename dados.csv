@@ -1,13 +1,13 @@
 ﻿Setor,Etapa,Concluído (0/1),% Setor
-OUVIDORIA,Lançamento dos cabos lógicos,0,0
-OUVIDORIA,Lançamento do circuito elétrico,0,0
-OUVIDORIA,Instalação das descidas,0,0
-OUVIDORIA,Instalação das tomadas elétricas,0,0
-OUVIDORIA,Instalação das tomadas lógicas,0,0
-OUVIDORIA,Conectorização das tomadas lógicas,0,0
-OUVIDORIA,Ativação dos pontos lógicos,0,0
-OUVIDORIA,Ativação das tomadas elétricas,0,0
-OUVIDORIA,Teste dos equipamentos,0,0
+OUVIDORIA,Lançamento dos cabos lógicos,1,100
+OUVIDORIA,Lançamento do circuito elétrico,1,100
+OUVIDORIA,Instalação das descidas,1,100
+OUVIDORIA,Instalação das tomadas elétricas,1,100
+OUVIDORIA,Instalação das tomadas lógicas,1,100
+OUVIDORIA,Conectorização das tomadas lógicas,1,100
+OUVIDORIA,Ativação dos pontos lógicos,1,100
+OUVIDORIA,Ativação das tomadas elétricas,1,100
+OUVIDORIA,Teste dos equipamentos,1,100
 AGEPLANDI,Lançamento dos cabos lógicos,0,0
 AGEPLANDI,Lançamento do circuito elétrico,0,0
 AGEPLANDI,Instalação das descidas,0,0
