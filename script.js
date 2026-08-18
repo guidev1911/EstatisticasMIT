@@ -506,7 +506,7 @@ function renderEditor(){
 
     rs.forEach(row => {
       const rowEl = document.createElement('div');
-      rowEl.className = 'editor-row';
+      rowEl.className = 'editor-row' + (row.concluido ? ' editor-row-done' : '');
 
       const check = document.createElement('input');
       check.type = 'checkbox';
