@@ -1,13 +1,13 @@
 ﻿Setor,Etapa,Concluído (0/1),% Setor
-OUVIDORIA,Lançamento dos cabos lógicos,1,100
-OUVIDORIA,Lançamento do circuito elétrico,1,100
-OUVIDORIA,Instalação das descidas,1,100
-OUVIDORIA,Instalação das tomadas elétricas,1,100
-OUVIDORIA,Instalação das tomadas lógicas,1,100
-OUVIDORIA,Conectorização das tomadas lógicas,1,100
-OUVIDORIA,Ativação dos pontos lógicos,1,100
-OUVIDORIA,Ativação das tomadas elétricas,1,100
-OUVIDORIA,Teste dos equipamentos,1,100
+OUVIDORIA,Lançamento dos cabos lógicos,1,64
+OUVIDORIA,Lançamento do circuito elétrico,1,64
+OUVIDORIA,Instalação das descidas,1,64
+OUVIDORIA,Instalação das tomadas elétricas,1,64
+OUVIDORIA,Instalação das tomadas lógicas,1,64
+OUVIDORIA,Conectorização das tomadas lógicas,1,64
+OUVIDORIA,Ativação dos pontos lógicos,1,64
+OUVIDORIA,Ativação das tomadas elétricas,0,64
+OUVIDORIA,Teste dos equipamentos,0,64
 AGEPLANDI,Lançamento dos cabos lógicos,0,0
 AGEPLANDI,Lançamento do circuito elétrico,0,0
 AGEPLANDI,Instalação das descidas,0,0
@@ -116,3 +116,29 @@ AGIN,Conectorização das tomadas lógicas,0,0
 AGIN,Ativação dos pontos lógicos,0,0
 AGIN,Ativação das tomadas elétricas,0,0
 AGIN,Teste dos equipamentos,0,0
+OUVIDORIA,Conectorização dos cabos lógicos no patch painel,0,64
+AGEPLANDI,Conectorização dos cabos lógicos no patch painel,0,0
+GERSAT,Conectorização dos cabos lógicos no patch painel,0,0
+SETAI,Conectorização dos cabos lógicos no patch painel,0,0
+RENAVAM,Conectorização dos cabos lógicos no patch painel,0,0
+DIROP,Conectorização dos cabos lógicos no patch painel,0,0
+COPROC,Conectorização dos cabos lógicos no patch painel,0,0
+CAEX,Conectorização dos cabos lógicos no patch painel,0,0
+GRAVAMES,Conectorização dos cabos lógicos no patch painel,0,0
+NUAVE,Conectorização dos cabos lógicos no patch painel,0,0
+GERCONV,Conectorização dos cabos lógicos no patch painel,0,0
+COREV,Conectorização dos cabos lógicos no patch painel,0,0
+AGIN,Conectorização dos cabos lógicos no patch painel,0,0
+OUVIDORIA,Ativação dos circuitos elétricos no quadro,0,64
+AGEPLANDI,Ativação dos circuitos elétricos no quadro,0,0
+GERSAT,Ativação dos circuitos elétricos no quadro,0,0
+SETAI,Ativação dos circuitos elétricos no quadro,0,0
+RENAVAM,Ativação dos circuitos elétricos no quadro,0,0
+DIROP,Ativação dos circuitos elétricos no quadro,0,0
+COPROC,Ativação dos circuitos elétricos no quadro,0,0
+CAEX,Ativação dos circuitos elétricos no quadro,0,0
+GRAVAMES,Ativação dos circuitos elétricos no quadro,0,0
+NUAVE,Ativação dos circuitos elétricos no quadro,0,0
+GERCONV,Ativação dos circuitos elétricos no quadro,0,0
+COREV,Ativação dos circuitos elétricos no quadro,0,0
+AGIN,Ativação dos circuitos elétricos no quadro,0,0

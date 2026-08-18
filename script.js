@@ -24,8 +24,10 @@ const STAGE_TEMPLATE = [
   "Instalação das tomadas elétricas",
   "Instalação das tomadas lógicas",
   "Conectorização das tomadas lógicas",
+  "Conectorização dos cabos lógicos no patch painel",
   "Ativação dos pontos lógicos",
   "Ativação das tomadas elétricas",
+  "Ativação dos circuitos elétricos no quadro",
   "Teste dos equipamentos"
 ];
 
@@ -37,6 +39,7 @@ const els = {
   editorStatus: document.getElementById('editorStatus'),
   openCsvInput: document.getElementById('openCsvInput'),
   addSectorBtn: document.getElementById('addSectorBtn'),
+  addStageAllBtn: document.getElementById('addStageAllBtn'),
   saveFileBtn: document.getElementById('saveFileBtn'),
   downloadCsvBtn: document.getElementById('downloadCsvBtn'),
   emptyState: document.getElementById('emptyState'),
@@ -528,6 +531,34 @@ els.addSectorBtn.addEventListener('click', () => {
   });
   refreshAll();
   renderEditor();
+});
+
+/* Adiciona uma etapa nova em TODOS os setores já existentes de uma vez —
+   útil quando um passo novo (ex: "Ativação dos circuitos elétricos no
+   quadro") passa a valer pra todo mundo, não só pra setores futuros.
+   Não duplica se o setor já tiver uma etapa com esse nome. */
+function addStageToAllSectors(etapaName){
+  const nome = etapaName.trim();
+  if(!nome) return;
+  let added = 0;
+  state.sectors.forEach(setor => {
+    const jaTem = state.rows.some(r => r.setor === setor && r.etapa.toLowerCase() === nome.toLowerCase());
+    if(!jaTem){
+      state.rows.push({ setor, etapa: nome, concluido:false });
+      added++;
+    }
+  });
+  refreshAll();
+  renderEditor();
+  els.editorStatus.textContent = added > 0
+    ? `"${nome}" adicionada em ${added} setor(es).`
+    : `Todos os setores já tinham "${nome}".`;
+}
+
+els.addStageAllBtn.addEventListener('click', () => {
+  const nome = prompt('Nome da etapa a adicionar em todos os setores:');
+  if(!nome || !nome.trim()) return;
+  addStageToAllSectors(nome);
 });
 
 els.openCsvInput.addEventListener('change', async (e) => {
