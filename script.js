@@ -40,6 +40,8 @@ const els = {
   openCsvInput: document.getElementById('openCsvInput'),
   addSectorBtn: document.getElementById('addSectorBtn'),
   addStageAllBtn: document.getElementById('addStageAllBtn'),
+  editorSearch: document.getElementById('editorSearch'),
+  editorSearchClear: document.getElementById('editorSearchClear'),
   saveFileBtn: document.getElementById('saveFileBtn'),
   downloadCsvBtn: document.getElementById('downloadCsvBtn'),
   emptyState: document.getElementById('emptyState'),
@@ -397,6 +399,8 @@ function refreshAll(){
 
 function openEditor(){
   els.editorOverlay.classList.add('open');
+  els.editorSearch.value = '';
+  els.editorSearchClear.classList.add('hidden');
   renderEditor();
 }
 function closeEditor(){
@@ -409,6 +413,39 @@ els.editorOverlay.addEventListener('click', (e) => {
 });
 document.addEventListener('keydown', (e) => {
   if(e.key === 'Escape' && els.editorOverlay.classList.contains('open')) closeEditor();
+});
+
+/* ---------- busca de setor dentro do editor ---------- */
+function applyEditorSearch(){
+  const q = els.editorSearch.value.trim().toLowerCase();
+  els.editorSearchClear.classList.toggle('hidden', q.length === 0);
+
+  const blocks = els.editorBody.querySelectorAll('.editor-sector');
+  let visibleCount = 0;
+  blocks.forEach(block => {
+    const setorName = (block.dataset.setor || '').toLowerCase();
+    const match = !q || setorName.includes(q);
+    block.classList.toggle('search-hidden', !match);
+    if(match) visibleCount++;
+  });
+
+  let noResults = els.editorBody.querySelector('.editor-no-results');
+  if(visibleCount === 0 && q){
+    if(!noResults){
+      noResults = document.createElement('p');
+      noResults.className = 'editor-no-results';
+      els.editorBody.appendChild(noResults);
+    }
+    noResults.textContent = `Nenhum setor encontrado para "${els.editorSearch.value.trim()}".`;
+  } else if(noResults){
+    noResults.remove();
+  }
+}
+els.editorSearch.addEventListener('input', applyEditorSearch);
+els.editorSearchClear.addEventListener('click', () => {
+  els.editorSearch.value = '';
+  els.editorSearch.focus();
+  applyEditorSearch();
 });
 
 function renderEditor(){
@@ -429,6 +466,7 @@ function renderEditor(){
 
     const block = document.createElement('div');
     block.className = 'editor-sector';
+    block.dataset.setor = setor;
 
     const head = document.createElement('div');
     head.className = 'editor-sector-head';
@@ -520,6 +558,8 @@ function renderEditor(){
 
     els.editorBody.appendChild(block);
   });
+
+  applyEditorSearch();
 }
 
 els.addSectorBtn.addEventListener('click', () => {
